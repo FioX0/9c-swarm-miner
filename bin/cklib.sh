@@ -224,18 +224,19 @@ function checkBuildParams() {
     CurlSnap2=`curl -s -w '%{time_connect}' -o /dev/null $SNAPSHOT1`
 
     if [[ $CurlSnap1 > $CurlSnap2 ]]; then
-        if [[ `wget -S --spider $SNAPSHOT1  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
-            SNAPSHOT=`echo $SNAPSHOT1`
+        if [[ `wget -S --spider $SNAPSHOT1.zip  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
+            SNAPSHOT=`echo $SNAPSHOT1.zip`
         else
-            SNAPSHOT=`echo $SNAPSHOT0`
+            SNAPSHOT=`echo $SNAPSHOT0.zip`
         fi
     else
-        if [[ `wget -S --spider $SNAPSHOT1  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
-            SNAPSHOT=`echo $SNAPSHOT0`
+        if [[ `wget -S --spider $SNAPSHOT1.zip  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
+            SNAPSHOT=`echo $SNAPSHOT0.zip`
         else
-            SNAPSHOT=`echo $SNAPSHOT1`
+            SNAPSHOT=`echo $SNAPSHOT1.zip`
         fi
     fi
+
 }
 
 function optionDonate() {
